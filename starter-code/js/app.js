@@ -6,11 +6,15 @@ var Cart = function(items) {
   this.items = items;
 };
 
-Cart.prototype.addItem = function(product, quantity) {
+Cart.prototype.addItem = function(product, quantity) { 
+  var newCartItem = new CartItem(product, quantity);
+  this.items.push(newCartItem);
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
 };
 
 Cart.prototype.saveToLocalStorage = function() {
+  var USER_ORDER = 'Order_placed';
+  localStorage.setItem(USER_ORDER, JSON.stringify(this));
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
 };
 
@@ -52,7 +56,7 @@ function generateCatalog() {
   new Product('assets/unicorn.jpg', 'Unicorn');
   new Product('assets/usb.gif', 'USB');
   new Product('assets/water-can.jpg', 'Water Can');
-  new Product('assets/wine-glass.jpg', 'Wine Glass');
+  new Product('assets/wine-glass.jpg', 'Wine Glass'); 
 }
 
 // Initialize the app by creating the big list of products with images and names
